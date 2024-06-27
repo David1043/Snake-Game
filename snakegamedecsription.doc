@@ -1,0 +1,59 @@
+"Explanation of the Snake Game Code"
+
+
+'SNAKE' CLASS:-
+
+->Snake extends JFrame to create the main window for the game.
+->initUI() method sets up the initial UI components:
+  ->>Adds an instance of Board (the game panel) to the frame.
+  ->>Sets the frame to be non-resizable (setResizable(false)).
+  ->>Packs the frame to its preferred size (pack()).
+  ->>Sets the title of the frame (setTitle("Snake")).
+  ->>Centers the frame on the screen (setLocationRelativeTo(null)).
+  ->>Sets default close operation (setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)).
+->main method starts the application by creating an instance of Snake and making it visible on the Event Dispatch Thread (EventQueue.invokeLater()).
+
+'BOARD' CLASS:-
+
+->Board extends JPanel and implements ActionListener for handling game logic and rendering.
+->Constants and Variables:
+
+  ->>B_WIDTH, B_HEIGHT: Width and height of the game board.
+  ->>DOT_SIZE: Size of each snake segment.
+  ->>ALL_DOTS: Maximum number of possible dots (snake segments) on the board.
+  ->>RAND_POS: Random position range for placing the apple.
+  ->>DELAY: Timer delay for game speed.
+  ->>x[], y[]: Arrays to hold coordinates of snake segments.
+  ->>dots: Number of segments currently in the snake.
+  ->>apple_x, apple_y: Coordinates of the apple.
+  ->>Direction booleans (leftDirection, rightDirection, upDirection, downDirection) control the movement direction of the snake.
+  ->>inGame: Boolean flag to determine if the game is currently running.
+  ->>timer: Timer object to trigger periodic updates (ActionListener).
+     ball, apple, 
+  ->>head: Image objects to store images of snake segment, apple, and snake head.
+->Initialization (initBoard, loadImages, initGame):
+
+  ->>initBoard(): Sets up the panel with background color, size, and focuses.
+  ->>loadImages(): Loads images (dot.png, apple.png, head.png) for snake and apple.
+  ->>initGame(): Initializes the game state (number of snake segments, initial positions, apple location, starts the timer).
+->Painting and Rendering (paintComponent, doDrawing, gameOver):
+
+  ->>paintComponent(Graphics g): Overrides JPanel's method to paint the game board.
+  ->>doDrawing(Graphics g): Renders game objects (snake, apple) based on current game state.
+  ->>gameOver(Graphics g): Renders "Game Over" message when the game ends.
+->Game Logic (checkApple, move, checkCollision, locateApple):
+
+  ->>checkApple(): Checks if the snake has eaten the apple and updates the game state accordingly.
+  ->>move(): Moves the snake based on current direction.
+  ->>checkCollision(): Checks for collisions with walls or itself to determine if the game should end.
+  ->>locateApple(): Places the apple at a random position on the board.
+->Input Handling (TAdapter):
+
+  ->>TAdapter class extends KeyAdapter to handle keyboard input (keyPressed method).
+  ->>Updates direction variables based on arrow key presses (VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN).
+SUMMARY:-
+
+"This code combines the Snake game logic and its rendering into a single Java application using Swing. It uses JFrame for the main window and JPanel for the game board. The game logic handles snake movement, apple spawning, collision detection, and game over conditions. Input handling is done through keyboard events using KeyAdapter. The game state is updated using a Timer, which triggers periodic updates to move the snake and check for game events. Overall, this structure follows the Model-View-Controller (MVC) pattern commonly used in GUI applications".
+
+
+
